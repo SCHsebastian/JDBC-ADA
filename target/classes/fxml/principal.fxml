@@ -21,12 +21,12 @@
                   <Image url="@../images/SCH.png" />
                </image>
             </ImageView>
-            <Label layoutX="293.0" layoutY="25.0" prefHeight="59.0" prefWidth="744.0" text="Bienvenido">
+            <Label fx:id="titulo" layoutX="293.0" layoutY="25.0" prefHeight="59.0" prefWidth="744.0" text="Bienvenido">
                <font>
                   <Font name="DejaVu Sans Condensed Bold" size="48.0" />
                </font>
             </Label>
-            <Button layoutX="1069.0" layoutY="31.0" mnemonicParsing="false" style="-fx-background-color: #e76f51;" text="HACERME PREMIUM">
+            <Button layoutX="1069.0" layoutY="31.0" mnemonicParsing="false" onAction="#premium" style="-fx-background-color: #e76f51;" text="HACERME PREMIUM">
                <graphic>
                   <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -41,7 +41,7 @@
    <left>
       <AnchorPane prefHeight="627.0" prefWidth="224.0" style="-fx-background-color: #e9c46a;" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="224.0" style="-fx-background-color: #f4a261;" text="Perfil">
+            <Button mnemonicParsing="false" onAction="#perfil" prefHeight="56.0" prefWidth="224.0" style="-fx-background-color: #f4a261;" text="Perfil">
                <graphic>
                   <ImageView accessibleRole="BUTTON" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true">
                      <image>
@@ -50,7 +50,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutY="250.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="224.0" style="-fx-background-color: #f4a261;" text="Home">
+            <Button layoutY="250.0" mnemonicParsing="false" onAction="#home" prefHeight="56.0" prefWidth="224.0" style="-fx-background-color: #f4a261;" text="Home">
                <graphic>
                   <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -59,7 +59,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutY="556.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="224.0" style="-fx-background-color: #f4a261;" text="Ajustes">
+            <Button layoutY="556.0" mnemonicParsing="false" onAction="#settings" prefHeight="56.0" prefWidth="224.0" style="-fx-background-color: #f4a261;" text="Ajustes">
                <graphic>
                   <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -68,7 +68,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutY="306.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="224.0" style="-fx-background-color: #f4a261;" text="Mi música">
+            <Button layoutY="306.0" mnemonicParsing="false" onAction="#album" prefHeight="56.0" prefWidth="224.0" style="-fx-background-color: #f4a261;" text="Mi música">
                <graphic>
                   <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -77,7 +77,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutY="56.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="224.0" style="-fx-background-color: #e76f51;" text="HACERME PREMIUM">
+            <Button layoutY="56.0" mnemonicParsing="false" onAction="#premium" prefHeight="61.0" prefWidth="224.0" style="-fx-background-color: #e76f51;" text="HACERME PREMIUM">
                <graphic>
                   <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -123,7 +123,7 @@
    <right>
       <VBox prefHeight="612.0" prefWidth="65.0" BorderPane.alignment="CENTER">
          <children>
-            <Button accessibleRole="IMAGE_VIEW" mnemonicParsing="false" prefHeight="64.0" prefWidth="86.0">
+            <Button accessibleRole="IMAGE_VIEW" mnemonicParsing="false" onAction="#mezclar" prefHeight="64.0" prefWidth="86.0">
                <graphic>
                   <ImageView fitHeight="54.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -132,7 +132,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button accessibleRole="IMAGE_VIEW" mnemonicParsing="false" prefHeight="64.0" prefWidth="82.0">
+            <Button accessibleRole="IMAGE_VIEW" mnemonicParsing="false" onAction="#bucle" prefHeight="64.0" prefWidth="82.0">
                <graphic>
                   <ImageView fitHeight="54.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -141,7 +141,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button accessibleRole="IMAGE_VIEW" mnemonicParsing="false" prefHeight="64.0" prefWidth="77.0">
+            <Button accessibleRole="IMAGE_VIEW" mnemonicParsing="false" onAction="#atras" prefHeight="64.0" prefWidth="77.0">
                <graphic>
                   <ImageView fitHeight="54.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -150,7 +150,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button accessibleRole="IMAGE_VIEW" mnemonicParsing="false" prefHeight="64.0" prefWidth="82.0">
+            <Button accessibleRole="IMAGE_VIEW" mnemonicParsing="false" onAction="#adelante" prefHeight="64.0" prefWidth="82.0">
                <graphic>
                   <ImageView fitHeight="54.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -159,7 +159,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button accessibleRole="IMAGE_VIEW" mnemonicParsing="false" prefHeight="64.0" prefWidth="77.0">
+            <Button accessibleRole="IMAGE_VIEW" mnemonicParsing="false" onAction="#adelantar" prefHeight="64.0" prefWidth="77.0">
                <graphic>
                   <ImageView fitHeight="54.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
                      <image>
@@ -168,7 +168,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button accessibleRole="IMAGE_VIEW" mnemonicParsing="false" prefHeight="64.0" prefWidth="78.0">
+            <Button accessibleRole="IMAGE_VIEW" mnemonicParsing="false" onAction="#megusta" prefHeight="64.0" prefWidth="78.0">
                <graphic>
                   <ImageView fitHeight="54.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -177,7 +177,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button accessibleRole="IMAGE_VIEW" mnemonicParsing="false" prefHeight="64.0" prefWidth="84.0">
+            <Button accessibleRole="IMAGE_VIEW" mnemonicParsing="false" onAction="#pausar" prefHeight="64.0" prefWidth="84.0">
                <graphic>
                   <ImageView fitHeight="54.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -186,7 +186,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button accessibleRole="IMAGE_VIEW" mnemonicParsing="false" prefHeight="64.0" prefWidth="81.0">
+            <Button accessibleRole="IMAGE_VIEW" mnemonicParsing="false" onAction="#atrasar" prefHeight="64.0" prefWidth="81.0">
                <graphic>
                   <ImageView fitHeight="54.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -195,7 +195,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button accessibleRole="IMAGE_VIEW" mnemonicParsing="false" prefHeight="64.0" prefWidth="76.0">
+            <Button accessibleRole="IMAGE_VIEW" mnemonicParsing="false" onAction="#silenciar" prefHeight="64.0" prefWidth="76.0">
                <graphic>
                   <ImageView fitHeight="54.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -204,7 +204,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Slider prefHeight="36.0" prefWidth="56.0" />
+            <Slider fx:id="volumen" prefHeight="36.0" prefWidth="56.0" />
          </children>
       </VBox>
    </right>

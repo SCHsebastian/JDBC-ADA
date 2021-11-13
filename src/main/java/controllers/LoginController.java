@@ -19,6 +19,7 @@ import java.sql.SQLException;
 public class LoginController {
 
     static LoginAccessDB loginAccessDB = new LoginAccessDB();
+    static Login usuario = null;
 
     @FXML
     private Button btnLogin;
@@ -37,7 +38,7 @@ public class LoginController {
 
     @FXML
     void inicia(ActionEvent event) throws SQLException{
-        Login usuario = loginAccessDB.getLogin(user.getText(), password.getText());
+        usuario = loginAccessDB.getLogin(user.getText(), password.getText());
         if(usuario != null){
             Parent parent = null;
             try {
