@@ -49,6 +49,7 @@ public class LoginController {
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.show();
+            this.login.getScene().getWindow().hide();
         }else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Usuario o contraseña incorrectos");
