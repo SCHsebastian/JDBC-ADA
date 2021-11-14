@@ -3,12 +3,12 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -16,17 +16,20 @@
    <top>
       <AnchorPane prefHeight="80.0" prefWidth="1280.0" style="-fx-background-color: #2a9d8f;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="107.0" fitWidth="184.0" layoutX="23.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="107.0" fitWidth="204.0" layoutX="42.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/SCH.png" />
                </image>
             </ImageView>
-            <Label fx:id="titulo" layoutX="293.0" layoutY="25.0" prefHeight="59.0" prefWidth="744.0" text="Bienvenido">
+            <Label fx:id="titulo" alignment="CENTER" layoutX="293.0" layoutY="25.0" prefHeight="59.0" prefWidth="744.0" text="Bienvenido">
                <font>
-                  <Font name="DejaVu Sans Condensed Bold" size="48.0" />
+                  <Font name="Cambria" size="48.0" />
                </font>
+               <effect>
+                  <Glow />
+               </effect>
             </Label>
-            <Button layoutX="1069.0" layoutY="31.0" mnemonicParsing="false" onAction="#premium" style="-fx-background-color: #e76f51;" text="HACERME PREMIUM">
+            <Button fx:id="btnPremium2" layoutX="1069.0" layoutY="31.0" mnemonicParsing="false" onAction="#premium" style="-fx-background-color: #e76f51;" text="HACERME PREMIUM">
                <graphic>
                   <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -68,7 +71,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutY="306.0" mnemonicParsing="false" onAction="#album" prefHeight="56.0" prefWidth="224.0" style="-fx-background-color: #f4a261;" text="Mi música">
+            <Button layoutY="306.0" mnemonicParsing="false" onAction="#miMusica" prefHeight="56.0" prefWidth="224.0" style="-fx-background-color: #f4a261;" text="Mi música">
                <graphic>
                   <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -77,7 +80,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutY="56.0" mnemonicParsing="false" onAction="#premium" prefHeight="61.0" prefWidth="224.0" style="-fx-background-color: #e76f51;" text="HACERME PREMIUM">
+            <Button fx:id="btnPremium1" layoutY="56.0" mnemonicParsing="false" onAction="#premium" prefHeight="61.0" prefWidth="224.0" style="-fx-background-color: #e76f51;" text="HACERME PREMIUM">
                <graphic>
                   <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -89,37 +92,6 @@
          </children>
       </AnchorPane>
    </left>
-   <center>
-      <TabPane prefHeight="612.0" prefWidth="989.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
-        <tabs>
-          <Tab text="Perfil">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-          </Tab>
-          <Tab text="Home">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-          </Tab>
-            <Tab text="Mi música">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-               </content>
-            </Tab>
-            <Tab text="Ajustes">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-               </content>
-            </Tab>
-            <Tab text="Premium">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-               </content>
-            </Tab>
-        </tabs>
-      </TabPane>
-   </center>
    <right>
       <VBox prefHeight="612.0" prefWidth="65.0" BorderPane.alignment="CENTER">
          <children>
@@ -150,29 +122,11 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button accessibleRole="IMAGE_VIEW" mnemonicParsing="false" onAction="#adelante" prefHeight="64.0" prefWidth="82.0">
-               <graphic>
-                  <ImageView fitHeight="54.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/017-next.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button accessibleRole="IMAGE_VIEW" mnemonicParsing="false" onAction="#adelantar" prefHeight="64.0" prefWidth="77.0">
-               <graphic>
-                  <ImageView fitHeight="54.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
-                     <image>
-                        <Image url="@../images/016-rewind.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button accessibleRole="IMAGE_VIEW" mnemonicParsing="false" onAction="#megusta" prefHeight="64.0" prefWidth="78.0">
+            <Button accessibleRole="IMAGE_VIEW" mnemonicParsing="false" onAction="#atrasar" prefHeight="64.0" prefWidth="81.0">
                <graphic>
                   <ImageView fitHeight="54.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/008-like.png" />
+                        <Image url="@../images/016-rewind.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -186,11 +140,29 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button accessibleRole="IMAGE_VIEW" mnemonicParsing="false" onAction="#atrasar" prefHeight="64.0" prefWidth="81.0">
+            <Button accessibleRole="IMAGE_VIEW" mnemonicParsing="false" onAction="#adelantar" prefHeight="64.0" prefWidth="77.0">
+               <graphic>
+                  <ImageView fitHeight="54.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                     <image>
+                        <Image url="@../images/016-rewind.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button accessibleRole="IMAGE_VIEW" mnemonicParsing="false" onAction="#adelante" prefHeight="64.0" prefWidth="82.0">
+               <graphic>
+                  <ImageView fitHeight="54.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/017-next.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button accessibleRole="IMAGE_VIEW" mnemonicParsing="false" onAction="#megusta" prefHeight="64.0" prefWidth="78.0">
                <graphic>
                   <ImageView fitHeight="54.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/016-rewind.png" />
+                        <Image url="@../images/008-like.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -208,4 +180,11 @@
          </children>
       </VBox>
    </right>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <StackPane fx:id="contentPane" prefHeight="612.0" prefWidth="988.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
+   </center>
 </BorderPane>

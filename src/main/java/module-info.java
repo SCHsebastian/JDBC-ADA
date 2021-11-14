@@ -10,6 +10,7 @@ module sch.spoty.jdbcada {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires java.sql;
+    requires javafx.media;
 
     opens sch.spoty.jdbcada to javafx.fxml;
     exports sch.spoty.jdbcada;

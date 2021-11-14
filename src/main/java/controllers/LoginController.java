@@ -18,7 +18,7 @@ import java.sql.SQLException;
 
 public class LoginController {
 
-    static LoginAccessDB loginAccessDB = new LoginAccessDB();
+    public static LoginAccessDB loginAccessDB = new LoginAccessDB();
     static Login usuario = null;
 
     @FXML
@@ -74,4 +74,7 @@ public class LoginController {
         stage.show();
     }
 
+    public void onEnter(ActionEvent actionEvent) throws SQLException {
+        inicia(actionEvent);
+    }
 }

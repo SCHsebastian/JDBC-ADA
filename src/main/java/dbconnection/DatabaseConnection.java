@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class DatabaseConnection {
-    private static DatabaseConnection connection;
+    static DatabaseConnection connection;
 
     //Me creo la clase conecction utilizando el patron singleton
     //ESTE ES EL PATRON SINGLETON
@@ -18,9 +18,7 @@ public class DatabaseConnection {
         // obtener la conexion única a la BBDD
 
         if(connection==null) {
-
             connection=new DatabaseConnection();
-
         }
         return connection;
     }

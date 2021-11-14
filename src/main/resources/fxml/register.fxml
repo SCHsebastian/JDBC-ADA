@@ -16,7 +16,7 @@
             <Label layoutX="32.0" layoutY="104.0" text="Repite tu Contraseña:" />
             <TextField fx:id="tfUser" layoutX="187.0" layoutY="33.0" prefHeight="26.0" prefWidth="341.0" />
             <PasswordField fx:id="tfPass" layoutX="187.0" layoutY="68.0" prefHeight="26.0" prefWidth="342.0" />
-            <PasswordField fx:id="tfPass2" layoutX="187.0" layoutY="100.0" prefHeight="26.0" prefWidth="342.0" />
+            <PasswordField fx:id="tfPass2" layoutX="187.0" layoutY="100.0" onAction="#onEnter" prefHeight="26.0" prefWidth="342.0" />
             <Button fx:id="cancel" layoutX="63.0" layoutY="143.0" mnemonicParsing="false" onAction="#cerrar" prefHeight="38.0" prefWidth="88.0" text="Cancelar" />
             <Button fx:id="register" layoutX="313.0" layoutY="142.0" mnemonicParsing="false" onAction="#registrar_usuario" prefHeight="40.0" prefWidth="90.0" text="Registrar" />
          </children>

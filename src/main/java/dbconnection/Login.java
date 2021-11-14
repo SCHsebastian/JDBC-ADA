@@ -1,6 +1,11 @@
 package dbconnection;
 
+import controllers.LoginController;
+
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 
@@ -10,13 +15,14 @@ public class Login {
     private String name;
     private String password;
     private Date creation_date;
-    private int nivel=1;
+    private int nivel = 1;
+    private ArrayList<Album> albums;
 
     public Login(int id, String name, String password) {
         this.id = id;
         this.name = name;
         this.password = password;
-        creation_date= new Date(System.currentTimeMillis());
+        creation_date = new Date(System.currentTimeMillis());
     }
 
     public int getId() {
@@ -59,7 +65,22 @@ public class Login {
         this.nivel = nivel;
     }
 
-    public Login(){
+    public ArrayList<Album> getAlbums() {
+        return albums;
+    }
+
+    public void setAlbums(ArrayList<Album> albums) {
+        this.albums = albums;
+    }
+
+    public void addAlbum(Album album) {
+        if(albums == null) {
+            albums = new ArrayList<>();
+        }
+        albums.add(album);
+    }
+
+    public Login() {
         this.id = 0;
         this.name = "";
         this.password = "";
@@ -85,4 +106,5 @@ public class Login {
     public int hashCode() {
         return Objects.hash(id, name);
     }
+
 }

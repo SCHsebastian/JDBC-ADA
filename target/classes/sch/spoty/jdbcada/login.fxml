@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-
 <Pane id="Login" fx:id="login" maxHeight="148.0" maxWidth="472.0" minHeight="148.0" minWidth="472.0" prefHeight="148.0" prefWidth="501.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <children>
       <AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
@@ -23,7 +22,7 @@
       <Label layoutX="24.0" layoutY="24.0" text="Introduce tu nombre de Usuario:" />
       <TextField id="usuario" fx:id="user" layoutX="208.0" layoutY="20.0" prefHeight="25.0" prefWidth="254.0" />
       <Label layoutX="24.0" layoutY="59.0" text="Introduce tu contraseña:" />
-      <PasswordField id="contrasenya" fx:id="password" layoutX="208.0" layoutY="55.0" prefHeight="25.0" prefWidth="253.0" />
+      <PasswordField id="contrasenya" fx:id="password" layoutX="208.0" layoutY="55.0" onAction="#onEnter" prefHeight="25.0" prefWidth="253.0" />
       <Button id="btnLogin" fx:id="btnLogin" layoutX="289.0" layoutY="98.0" mnemonicParsing="false" onAction="#inicia" prefHeight="35.0" prefWidth="92.0" text="Login" />
       <Button id="btnRegistro" fx:id="btnRegister" layoutX="65.0" layoutY="98.0" mnemonicParsing="false" onAction="#registra" prefHeight="35.0" prefWidth="92.0" text="Registrarme" />
    </children>

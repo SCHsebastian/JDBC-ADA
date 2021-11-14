@@ -56,5 +56,8 @@ public class RegisterController {
         }
     }
 
+    public void onEnter(ActionEvent actionEvent) throws SQLException {
+        registrar_usuario(actionEvent);
+    }
 }
 
