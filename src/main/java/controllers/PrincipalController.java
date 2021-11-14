@@ -1,5 +1,6 @@
 package controllers;
 
+import dbconnection.Cancion;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,17 +10,21 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.*;
-
+import javafx.util.Duration;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class PrincipalController {
 
     private MediaPlayer mediaPlayer;
     private Media media;
-    static ArrayList<String> playlist = new ArrayList<>();
-
+    static ArrayList<Cancion> playlist = new ArrayList<>();
+    static ArrayList<Media> mediaList = new ArrayList<>();
     boolean isPlaying = false;
+
+    @FXML
+    private Label nombreCancion;
 
     @FXML
     private Button btnPremium1;
@@ -77,12 +82,12 @@ public class PrincipalController {
 
     @FXML
     void adelantar(ActionEvent event) {
-
+        mediaPlayer.seek(mediaPlayer.getTotalDuration());
     }
 
     @FXML
     void adelante(ActionEvent event) {
-
+        mediaPlayer.seek(mediaPlayer.getCurrentTime().add(Duration.millis(500)));
     }
 
     @FXML
@@ -92,22 +97,27 @@ public class PrincipalController {
 
     @FXML
     void atrasar(ActionEvent event) {
-
+        mediaPlayer.seek(mediaPlayer.getCurrentTime().subtract(Duration.millis(500)));
     }
 
     @FXML
     void bucle(ActionEvent event) {
-
+        while (mediaPlayer.getTotalDuration() == mediaPlayer.getCurrentTime()) {
+            mediaPlayer.seek(mediaPlayer.getStartTime());
+        }
     }
 
     @FXML
-    void megusta(ActionEvent event) {
-
+    void megusta(ActionEvent event) throws SQLException {
+        Cancion xd = LoginController.loginAccessDB.getCancion(media.getSource());
+        LoginController.loginAccessDB.addLike(xd);
     }
 
     @FXML
     void mezclar(ActionEvent event) {
-
+        mediaList.sort((o1, o2) -> {
+            return (int) (Math.random() * 3 - 1);
+        });
     }
 
     @FXML
@@ -121,7 +131,7 @@ public class PrincipalController {
 
     @FXML
     void silenciar(ActionEvent event) {
-
+        mediaPlayer.setVolume(0);
     }
 
     /// Eventos
@@ -139,8 +149,13 @@ public class PrincipalController {
         }catch (Exception e) {
             e.printStackTrace();
         }
-
-
+        for (Cancion url :
+                playlist) {
+            mediaList.add(new Media(url.getUrl()));
+        }
+       // media = mediaList.get(0);
+       // mediaPlayer = new MediaPlayer(media);
+        // nomCancion.setText(media.getSource().substring(media.getSource().lastIndexOf("/") + 1));
     }
 
 }

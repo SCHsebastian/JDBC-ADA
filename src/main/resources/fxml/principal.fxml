@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
@@ -37,7 +38,11 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
+            <Label fx:id="nombreCancion" alignment="CENTER" contentDisplay="CENTER" layoutX="270.0" layoutY="85.0" prefHeight="18.0" prefWidth="798.0" text="Sonando:  ..." />
          </children>
       </AnchorPane>
    </top>
@@ -52,6 +57,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Button layoutY="250.0" mnemonicParsing="false" onAction="#home" prefHeight="56.0" prefWidth="224.0" style="-fx-background-color: #f4a261;" text="Home">
                <graphic>
@@ -61,6 +69,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Button layoutY="556.0" mnemonicParsing="false" onAction="#settings" prefHeight="56.0" prefWidth="224.0" style="-fx-background-color: #f4a261;" text="Ajustes">
                <graphic>
@@ -70,6 +81,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Button layoutY="306.0" mnemonicParsing="false" onAction="#miMusica" prefHeight="56.0" prefWidth="224.0" style="-fx-background-color: #f4a261;" text="Mi música">
                <graphic>
@@ -77,8 +91,14 @@
                      <image>
                         <Image url="@../images/005-folder.png" />
                      </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Button fx:id="btnPremium1" layoutY="56.0" mnemonicParsing="false" onAction="#premium" prefHeight="61.0" prefWidth="224.0" style="-fx-background-color: #e76f51;" text="HACERME PREMIUM">
                <graphic>
@@ -88,6 +108,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
          </children>
       </AnchorPane>
@@ -101,6 +124,9 @@
                      <image>
                         <Image url="@../images/015-shuffle.png" />
                      </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </ImageView>
                </graphic>
             </Button>
@@ -110,6 +136,9 @@
                      <image>
                         <Image url="@../images/011-repeat.png" />
                      </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </ImageView>
                </graphic>
             </Button>
@@ -119,6 +148,9 @@
                      <image>
                         <Image url="@../images/019-back.png" />
                      </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </ImageView>
                </graphic>
             </Button>
@@ -128,6 +160,9 @@
                      <image>
                         <Image url="@../images/016-rewind.png" />
                      </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </ImageView>
                </graphic>
             </Button>
@@ -137,6 +172,9 @@
                      <image>
                         <Image url="@../images/018-pause.png" />
                      </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </ImageView>
                </graphic>
             </Button>
@@ -146,6 +184,9 @@
                      <image>
                         <Image url="@../images/016-rewind.png" />
                      </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </ImageView>
                </graphic>
             </Button>
@@ -155,6 +196,9 @@
                      <image>
                         <Image url="@../images/017-next.png" />
                      </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </ImageView>
                </graphic>
             </Button>
@@ -164,6 +208,9 @@
                      <image>
                         <Image url="@../images/008-like.png" />
                      </image>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
                   </ImageView>
                </graphic>
             </Button>
@@ -173,10 +220,16 @@
                      <image>
                         <Image url="@../images/014-speaker-1.png" />
                      </image>
+                     <cursor>
+                        <Cursor fx:constant="CLOSED_HAND" />
+                     </cursor>
                   </ImageView>
                </graphic>
             </Button>
-            <Slider fx:id="volumen" prefHeight="36.0" prefWidth="56.0" />
+            <Slider fx:id="volumen" prefHeight="36.0" prefWidth="56.0">
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor></Slider>
          </children>
       </VBox>
    </right>

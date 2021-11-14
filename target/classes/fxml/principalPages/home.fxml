@@ -8,7 +8,7 @@
    <top>
       <AnchorPane prefHeight="60.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="239.0" layoutY="22.0" text="HOME" />
+            <Label layoutX="0.0" layoutY="0.0" prefHeight="60.0" prefWidth="600.0" text="Home" />
          </children></AnchorPane>
    </top>
 </BorderPane>

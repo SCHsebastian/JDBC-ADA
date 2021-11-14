@@ -1,5 +1,6 @@
 package dbconnection;
 
+import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -73,12 +74,11 @@ public class LoginAccessDB {
         if (login == null){
             return -1;
         }
-        String sql = "INSERT INTO login (username, password, created_at, nivel) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO login (username, password, created_at) VALUES (?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, login.getName());
         statement.setString(2, login.getPassword());
         statement.setDate(3,new java.sql.Date(System.currentTimeMillis()));
-        statement.setInt(4, login.getNivel());
         statement.executeUpdate();
         return login.getId();
     }
@@ -104,5 +104,31 @@ public class LoginAccessDB {
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setInt(1, login.getId());
         statement.executeUpdate();
+    }
+
+    public Cancion getCancion(String url) throws SQLException{
+        try {
+            String sql = "SELECT * FROM cancion WHERE url = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, url.toString());
+            ResultSet resultSet = statement.executeQuery();
+            Cancion cancion = new Cancion(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3), resultSet.getString(4),resultSet.getString(5) );
+            return cancion;
+        }   catch (SQLException e) {
+            System.out.println("Error al conseguir cancion");
+        }
+        return null;
+    }
+
+    public void addLike(Cancion cancion) throws SQLException{
+        try {
+            String sql = "UPDATE cancion SET likes = likes + 1 WHERE id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, cancion.getId());
+            statement.executeUpdate();
+        }   catch (SQLException e) {
+            System.out.println("Error al añadir like");
+        }
+
     }
 }
