@@ -6,6 +6,7 @@ public class Cancion {
     private String artista;
     private String duracion;
     private String url;
+    private boolean isPremium=false;
 
     public Cancion(int id, String nombre, String artista, String duracion, String url){
         this.id = id;
@@ -53,6 +54,14 @@ public class Cancion {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public boolean isPremium() {
+        return isPremium;
+    }
+
+    public void setPremium(boolean isPpremium) {
+        this.isPremium = isPremium;
     }
 
     public String toString(){

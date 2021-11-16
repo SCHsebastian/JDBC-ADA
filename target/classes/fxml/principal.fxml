@@ -42,6 +42,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <Label fx:id="nombreCancion" alignment="CENTER" contentDisplay="CENTER" layoutX="270.0" layoutY="85.0" prefHeight="18.0" prefWidth="798.0" text="Sonando:  ..." />
          </children>
       </AnchorPane>
    </top>
@@ -95,6 +96,9 @@
                      </cursor>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Button fx:id="btnPremium1" layoutY="56.0" mnemonicParsing="false" onAction="#premium" prefHeight="61.0" prefWidth="224.0" style="-fx-background-color: #e76f51;" text="HACERME PREMIUM">
                <graphic>

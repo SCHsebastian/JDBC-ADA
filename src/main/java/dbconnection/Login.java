@@ -1,10 +1,5 @@
 package dbconnection;
 
-import controllers.LoginController;
-
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;

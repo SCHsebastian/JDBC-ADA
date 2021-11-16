@@ -12,6 +12,7 @@ import java.sql.SQLException;
 
 public class RegisterController {
 
+
     @FXML
     private Button cancel;
 
@@ -59,5 +60,7 @@ public class RegisterController {
     public void onEnter(ActionEvent actionEvent) throws SQLException {
         registrar_usuario(actionEvent);
     }
+
+
 }
 

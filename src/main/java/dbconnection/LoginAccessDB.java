@@ -74,11 +74,12 @@ public class LoginAccessDB {
         if (login == null){
             return -1;
         }
-        String sql = "INSERT INTO login (username, password, created_at) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO login (username, password, created_at, nivel) VALUES (?, ?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setString(1, login.getName());
         statement.setString(2, login.getPassword());
         statement.setDate(3,new java.sql.Date(System.currentTimeMillis()));
+        statement.setInt(4, login.getNivel());
         statement.executeUpdate();
         return login.getId();
     }

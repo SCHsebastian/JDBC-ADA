@@ -33,7 +33,7 @@ public class PrincipalController {
     private Button btnPremium2;
 
     @FXML
-    private Label titulo;
+    private Label titulo= new Label("Bienvenido");
 
     @FXML
     private Slider volumen;
@@ -137,15 +137,13 @@ public class PrincipalController {
     /// Eventos
 
     public void initialize() {
-        titulo.setText("Bienvenido "+LoginController.usuario.getName());
-        if (LoginController.usuario.getNivel() == 2 || LoginController.usuario.getNivel() == 3) {
+        titulo.setText("Bienvenido "+LoginController.usuario.getName());        if (LoginController.usuario.getNivel() == 2 || LoginController.usuario.getNivel() == 3) {
             btnPremium1.setVisible(false);
             btnPremium2.setVisible(false);
         }
         try {
             Parent home = FXMLLoader.load(getClass().getResource("/fxml/principalPages/home.fxml"));
-            contentPane.getChildren().removeAll();
-            contentPane.getChildren().setAll(home);
+
         }catch (Exception e) {
             e.printStackTrace();
         }
@@ -157,5 +155,4 @@ public class PrincipalController {
        // mediaPlayer = new MediaPlayer(media);
         // nomCancion.setText(media.getSource().substring(media.getSource().lastIndexOf("/") + 1));
     }
-
 }
