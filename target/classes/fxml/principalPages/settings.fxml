@@ -42,7 +42,7 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-          <Tab text="Usuarios">
+          <Tab fx:id="listaUsuarios" text="Usuarios">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -68,7 +68,7 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-            <Tab text="Música">
+            <Tab fx:id="listaMusica" text="Música">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>

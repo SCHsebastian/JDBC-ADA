@@ -15,6 +15,8 @@ import java.util.Date;
 
 public class SettingsController {
 
+    Login este = LoginController.usuario;
+
     ArrayList<Login> listaLogins = new ArrayList<>();
 
     @FXML
@@ -69,13 +71,8 @@ public class SettingsController {
         //Modifica el usuario seleccionado en la tabla seleccionando su id
         Login login = tabla.getSelectionModel().getSelectedItem();
         if (login != null) {
-            try {
-                login.setName(tfNombreUsuario.getText());
-                login.setPassword(tfNuevaContrasenya.getText());
-                LoginController.loginAccessDB.updateLogin(login);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            tfNombreUsuario.setText(login.getName());
+            tfAntiguaContrasenya.setText(login.getPassword());
         }
     }
 
@@ -85,6 +82,14 @@ public class SettingsController {
     }
 
     public void initialize() throws SQLException {
+        if (este.getNivel() > 1) {
+            actualizaTabla();
+        }
+        tfNombreUsuario.setDisable(true);
+        tfNombreUsuario.setText(este.getName());
+    }
+
+    private void actualizaTabla() throws SQLException {
         for (Login login: LoginController.loginAccessDB.getLogins()) {
             listaLogins.add(login);
         }
@@ -98,7 +103,6 @@ public class SettingsController {
         ObservableList<Login> lista = FXCollections.observableArrayList(listaLogins);
         tabla.setItems(lista);
         tabla.getColumns();
-
     }
 
 }
