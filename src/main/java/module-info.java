@@ -12,6 +12,7 @@ module sch.spoty.jdbcada {
     requires eu.hansolo.tilesfx;
     requires java.sql;
     requires javafx.media;
+    requires java.desktop;
 
 
     opens sch.spoty.jdbcada to javafx.fxml, javafx.base;

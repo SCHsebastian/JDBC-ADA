@@ -8,10 +8,13 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import java.awt.Desktop;
+import java.net.URI;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.*;
 import javafx.util.Duration;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -22,6 +25,7 @@ public class PrincipalController {
     static ArrayList<Cancion> playlist = new ArrayList<>();
     static ArrayList<Media> mediaList = new ArrayList<>();
     boolean isPlaying = false;
+
 
     @FXML
     private Label nombreCancion;
@@ -51,10 +55,10 @@ public class PrincipalController {
     }
 
     @FXML
-    void premium(ActionEvent event) throws IOException {
-        Parent home = FXMLLoader.load(getClass().getResource("/fxml/principalPages/premium.fxml"));
-        contentPane.getChildren().removeAll();
-        contentPane.getChildren().setAll(home);
+    void premium(ActionEvent event) throws IOException, URISyntaxException {
+        if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+            Desktop.getDesktop().browse(new URI("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FSGBWZBTXZR3E"));
+        }
     }
 
     @FXML
@@ -137,13 +141,15 @@ public class PrincipalController {
     /// Eventos
 
     public void initialize() {
-        titulo.setText("Bienvenido "+LoginController.usuario.getName());        if (LoginController.usuario.getNivel() == 2 || LoginController.usuario.getNivel() == 3) {
+        titulo.setText("Bienvenido "+LoginController.usuario.getName());
+        if (LoginController.usuario.getNivel() == 2 || LoginController.usuario.getNivel() == 3) {
             btnPremium1.setVisible(false);
             btnPremium2.setVisible(false);
         }
         try {
             Parent home = FXMLLoader.load(getClass().getResource("/fxml/principalPages/home.fxml"));
-
+            contentPane.getChildren().removeAll();
+            contentPane.getChildren().add(home);
         }catch (Exception e) {
             e.printStackTrace();
         }

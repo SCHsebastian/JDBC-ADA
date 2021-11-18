@@ -10,6 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -48,6 +49,7 @@ public class LoginController {
             }
             Scene scene = new Scene(parent);
             Stage stage = new Stage();
+            stage.setTitle("Principal");
             stage.setScene(scene);
             stage.show();
             this.login.getScene().getWindow().hide();

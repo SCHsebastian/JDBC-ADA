@@ -15,9 +15,9 @@
 
 <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="610.0" prefWidth="988.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SettingsController">
    <center>
-      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+      <TabPane fx:id="tabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
-          <Tab text="Mi perfil">
+          <Tab fx:id="perfil" text="Mi perfil">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -42,7 +42,7 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-          <Tab text="Usuarios">
+          <Tab fx:id="listaUsuarios" text="Usuarios">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -55,20 +55,22 @@
                           </columns>
                         </TableView>
                         <Label layoutX="14.0" layoutY="14.0" text="Administración de usuarios" />
-                        <TextField fx:id="tfUserABuscar" layoutX="510.0" layoutY="39.0" prefHeight="26.0" prefWidth="287.0" />
-                        <Button fx:id="btnBuscar" layoutX="821.0" layoutY="37.0" mnemonicParsing="false" onAction="#buscaUsuario" text="buscar">
+                        <TextField fx:id="tfUserABuscar" layoutX="357.0" layoutY="48.0" prefHeight="26.0" prefWidth="287.0" />
+                        <Button fx:id="btnBuscar" layoutX="668.0" layoutY="46.0" mnemonicParsing="false" onAction="#buscaUsuario" text="Buscar">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Button>
-                        <Label layoutX="306.0" layoutY="43.0" text="Introduce usuario a buscar:" />
-                        <Button fx:id="btnModifica" layoutX="893.0" layoutY="37.0" mnemonicParsing="false" onAction="#modificaUsuario" text="modificar">
+                        <Label layoutX="153.0" layoutY="52.0" text="Introduce usuario a buscar:" />
+                        <Button fx:id="btnModifica" layoutX="740.0" layoutY="46.0" mnemonicParsing="false" onAction="#modificaUsuario" text="Modificar">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Button>
+                        <Button layoutX="827.0" layoutY="46.0" mnemonicParsing="false" onAction="#EliminarUsuario" text="Eliminar" />
+                        <Button layoutX="906.0" layoutY="46.0" mnemonicParsing="false" onAction="#HacerQuitarPremium" text="Premium" />
                      </children></AnchorPane>
             </content>
           </Tab>
-            <Tab text="Música">
+            <Tab fx:id="listaMusica" text="Música">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
