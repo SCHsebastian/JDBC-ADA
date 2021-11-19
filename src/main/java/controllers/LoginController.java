@@ -23,12 +23,6 @@ public class LoginController {
     static Login usuario = null;
 
     @FXML
-    private Button btnLogin;
-
-    @FXML
-    private Button btnRegister;
-
-    @FXML
     private Pane login;
 
     @FXML
@@ -38,7 +32,7 @@ public class LoginController {
     private TextField user;
 
     @FXML
-    void inicia(ActionEvent event) throws SQLException{
+    void inicia(ActionEvent event){
         usuario = loginAccessDB.getLogin(user.getText(), password.getText());
         if(usuario != null){
             Parent parent = null;
@@ -76,7 +70,7 @@ public class LoginController {
         stage.show();
     }
 
-    public void onEnter(ActionEvent actionEvent) throws SQLException {
+    public void onEnter(ActionEvent actionEvent) {
         inicia(actionEvent);
     }
 }

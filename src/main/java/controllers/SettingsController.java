@@ -17,15 +17,6 @@ public class SettingsController {
     ArrayList<Login> listaLogins = new ArrayList<>();
 
     @FXML
-    private Button btnBuscar;
-
-    @FXML
-    private Button btnCambiar;
-
-    @FXML
-    private Button btnModifica;
-
-    @FXML
     private CheckBox checkBox;
 
     @FXML
@@ -70,6 +61,28 @@ public class SettingsController {
     @FXML
     private TabPane tabPane;
 
+    @FXML
+    void DropTable(ActionEvent event) {
+        //Elimina la tabla de usuarios
+        Alert seguro = new Alert(Alert.AlertType.CONFIRMATION);
+        seguro.setTitle("Confirmación");
+        seguro.setContentText("¿Estás seguro de que quieres eliminar todos los usuarios?");
+        seguro.showAndWait();
+        if (seguro.getResult() == ButtonType.OK) {
+            LoginController.loginAccessDB.dropDatabase();
+            //cerramos la ventana ---- No consigo que se cierre la ventana.
+        }else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("ERROR");
+            alert.setContentText("No se ha eliminado ningún usuario");
+            alert.showAndWait();
+        }
+    }
+
+    void ActualizaTabla(ActionEvent event) {
+        tabla.getItems().clear();
+        buscaUsuario(event);
+    }
 
     @FXML
     void EliminarUsuario(ActionEvent event) {
@@ -82,15 +95,19 @@ public class SettingsController {
             Login login = tabla.getSelectionModel().getSelectedItem();
             if (login != null) {
                 LoginController.loginAccessDB.deleteLogin(login);
+                listaLogins.remove(login);
             }else {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("ERROR");
                 alert.setContentText("No se ha seleccionado ningún usuario");
+                alert.showAndWait();
             }
+            ActualizaTabla(event);
         }else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("ERROR");
             alert.setContentText("No se ha eliminado ningún usuario");
+            alert.showAndWait();
         }
 
     }
@@ -112,11 +129,14 @@ public class SettingsController {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("ERROR");
                 alert.setContentText("No se puede cambiar nivel a un administrador");
+                alert.showAndWait();
             }
+            ActualizaTabla(event);
         }else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("ERROR");
             alert.setContentText("No se ha seleccionado ningún usuario");
+            alert.showAndWait();
         }
     }
 
@@ -134,6 +154,7 @@ public class SettingsController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("NOT FOUND");
             alert.setContentText("No existe el usuario");
+            alert.showAndWait();
         }else {
             ObservableList<Login> lista2 = FXCollections.observableArrayList(listaEncontrados);
             tabla.setItems(null);
@@ -164,7 +185,7 @@ public class SettingsController {
                     editar.setPassword(tfNuevaContrasenya.getText());
                     LoginController.loginAccessDB.updateLogin(editar);
                     if (este.getNivel() == 3) {
-                        actualizaTabla();
+                        ActualizaTabla(event);
                     }
             }else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -180,22 +201,17 @@ public class SettingsController {
 
     public void initialize(){
         //Inicializa la tabla
-        listaUsuarios.setDisable(true);
-        listaMusica.setDisable(true);
-        if (este.getNivel() == 3) {
-            ensenyaTabla();
-            actualizaTabla();
+        if (este.getNivel() != 3) {
+            listaUsuarios.setDisable(true);
+            listaMusica.setDisable(true);
+        }else {
+            actualizaTablaInicio();
         }
         tfNombreUsuario.setDisable(true);
         tfNombreUsuario.setText(este.getName());
     }
 
-    private void ensenyaTabla() {
-        listaUsuarios.setDisable(false);
-        listaMusica.setDisable(false);
-    }
-
-    private void actualizaTabla(){
+    private void actualizaTablaInicio(){
         //Actualiza la tabla
         for (Login login: LoginController.loginAccessDB.getLogins()) {
             if (tabla.getItems().contains(login)) {

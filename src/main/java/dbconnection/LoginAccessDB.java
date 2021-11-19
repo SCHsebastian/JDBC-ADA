@@ -1,19 +1,22 @@
 package dbconnection;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class LoginAccessDB {
-    private DatabaseConnection con = DatabaseConnection.getInstance();
-    private Connection connection = con.getConnection();
+    private final DatabaseConnection con = DatabaseConnection.getInstance();
+    private final Connection connection = con.getConnection();
 
     public List<Login> getLogins(){
         try {
             String sql = "SELECT * FROM login";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
-            List<Login> logins = new ArrayList<Login>();
+            List<Login> logins = new ArrayList<>();
             while (resultSet.next()){
                 Login login = new Login();
                 login.setId(resultSet.getInt(1));
@@ -32,7 +35,7 @@ public class LoginAccessDB {
     }
 
     public Login getLogin(String name, String password){
-        if (name == "" || password == ""){
+        if (name.equals("")|| password.equals("")){
             return null;
         }
         try {
@@ -41,7 +44,7 @@ public class LoginAccessDB {
             statement.setString(1, name);
             statement.setString(2, password);
             ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
+            if (resultSet.next()) {
 
                 int uno = resultSet.getInt(1);
                 String dos = resultSet.getString(2);
@@ -98,8 +101,8 @@ public class LoginAccessDB {
         }catch (SQLException e){
             e.printStackTrace();
             System.out.println("Error al insertar");
-            return -1;
         }
+        return -1;
     }
 
     public void updateLogin(Login login){
@@ -140,7 +143,7 @@ public class LoginAccessDB {
         try {
             String sql = "SELECT * FROM cancion WHERE url = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, url.toString());
+            statement.setString(1, url);
             ResultSet resultSet = statement.executeQuery();
             Cancion cancion = new Cancion(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3), resultSet.getString(4),resultSet.getString(5) );
             return cancion;
@@ -164,11 +167,39 @@ public class LoginAccessDB {
 
     public void dropDatabase(){
         try {
-            String sql = "DROP DATABASE IF EXISTS severo.ad";
+            String sql = "DROP DATABASE IF EXISTS severo_ad";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.executeUpdate();
         }catch (SQLException e){
             System.out.println("Error al borrar la base de datos");
         }
-    }
+        Properties newDB = new Properties();
+        try {
+            newDB.load(new FileReader("src/main/resources/database.properties"));
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error al cargar el archivo");
+        }
+        String[] datos = {newDB.getProperty("database"),newDB.getProperty("login"),newDB.getProperty("cancion"),newDB.getProperty("userPicks")};
+            for (String dato : datos) {
+                try {
+                    String sql = dato;
+                    PreparedStatement statement = connection.prepareStatement(sql);
+                    statement.executeUpdate();
+                } catch (SQLException e) {
+                    System.out.println("Error al crear la base de datos");
+                }
+            }
+        admin();
+        }
+
+        public void admin(){
+            try {
+                String sql = "INSERT INTO `severo_ad`.`login` (`id`, `username`, `password`, `created_at`, `nivel`) VALUES ('1', 'admin', 'admin', now(), '3')";
+                PreparedStatement statement = connection.prepareStatement(sql);
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                System.out.println("Error al crear administrador");
+            }
+        }
 }

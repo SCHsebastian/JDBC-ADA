@@ -10,6 +10,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import java.awt.Desktop;
 import java.net.URI;
+
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.*;
 import javafx.util.Duration;
@@ -26,6 +28,8 @@ public class PrincipalController {
     static ArrayList<Media> mediaList = new ArrayList<>();
     boolean isPlaying = false;
 
+    @FXML
+    public static BorderPane pane;
 
     @FXML
     private Label nombreCancion;

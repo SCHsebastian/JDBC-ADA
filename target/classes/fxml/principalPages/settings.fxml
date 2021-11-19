@@ -12,6 +12,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="610.0" prefWidth="988.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SettingsController">
    <center>
@@ -67,6 +68,11 @@
                            </cursor></Button>
                         <Button layoutX="827.0" layoutY="46.0" mnemonicParsing="false" onAction="#EliminarUsuario" text="Eliminar" />
                         <Button layoutX="906.0" layoutY="46.0" mnemonicParsing="false" onAction="#HacerQuitarPremium" text="Premium" />
+                        <Button layoutX="14.0" layoutY="46.0" mnemonicParsing="false" onAction="#DropTable" style="-fx-background-color: #ff0000;" text="BORRAR DATABASE" textAlignment="CENTER" underline="true">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Button>
                      </children></AnchorPane>
             </content>
           </Tab>
