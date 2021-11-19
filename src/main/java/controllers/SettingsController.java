@@ -3,7 +3,6 @@ package controllers;
 import dbconnection.Login;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -62,7 +61,7 @@ public class SettingsController {
     private TabPane tabPane;
 
     @FXML
-    void DropTable(ActionEvent event) {
+    void DropTable() {
         //Elimina la tabla de usuarios
         Alert seguro = new Alert(Alert.AlertType.CONFIRMATION);
         seguro.setTitle("Confirmación");
@@ -79,13 +78,13 @@ public class SettingsController {
         }
     }
 
-    void ActualizaTabla(ActionEvent event) {
+    void ActualizaTabla() {
         tabla.getItems().clear();
-        buscaUsuario(event);
+        buscaUsuario();
     }
 
     @FXML
-    void EliminarUsuario(ActionEvent event) {
+    void EliminarUsuario() {
         //Elimina un usuario de la tabla
         Alert seguro = new Alert(Alert.AlertType.CONFIRMATION);
         seguro.setTitle("Confirmación");
@@ -102,7 +101,7 @@ public class SettingsController {
                 alert.setContentText("No se ha seleccionado ningún usuario");
                 alert.showAndWait();
             }
-            ActualizaTabla(event);
+            ActualizaTabla();
         }else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("ERROR");
@@ -113,7 +112,7 @@ public class SettingsController {
     }
 
     @FXML
-    void HacerQuitarPremium(ActionEvent event) {
+    void HacerQuitarPremium() {
         //Quita o pone premium a un usuario
         Login login = tabla.getSelectionModel().getSelectedItem();
         if (login != null) {
@@ -131,7 +130,7 @@ public class SettingsController {
                 alert.setContentText("No se puede cambiar nivel a un administrador");
                 alert.showAndWait();
             }
-            ActualizaTabla(event);
+            ActualizaTabla();
         }else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("ERROR");
@@ -141,7 +140,7 @@ public class SettingsController {
     }
 
     @FXML
-    void buscaUsuario(ActionEvent event) {
+    void buscaUsuario() {
         //Busca un usuario en la tabla
         ArrayList<Login> listaEncontrados = new ArrayList<>();
         String user = tfUserABuscar.getText();
@@ -164,7 +163,7 @@ public class SettingsController {
     }
 
     @FXML
-    void modificaUsuario(ActionEvent event) {
+    void modificaUsuario() {
         //Modifica el usuario seleccionado en la tabla seleccionando su id
         Login login = tabla.getSelectionModel().getSelectedItem();
         if (login != null) {
@@ -175,7 +174,7 @@ public class SettingsController {
     }
 
     @FXML
-    void onEnter(ActionEvent event) {
+    void onEnter() {
         //Modifica a un usuario seleccionado en la tabla o al usuario normal
         Login editar = null;
         if(checkBox.isSelected() && (tfNuevaContrasenya2.getText().equals(tfNuevaContrasenya.getText()))){
@@ -185,7 +184,7 @@ public class SettingsController {
                     editar.setPassword(tfNuevaContrasenya.getText());
                     LoginController.loginAccessDB.updateLogin(editar);
                     if (este.getNivel() == 3) {
-                        ActualizaTabla(event);
+                        ActualizaTabla();
                     }
             }else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -221,7 +220,6 @@ public class SettingsController {
             }
         }
         //Introducimos los usuarios en la tabla
-
         created_at.setCellValueFactory(new PropertyValueFactory<>("creation_date"));
         id.setCellValueFactory(new PropertyValueFactory<>("id"));
         premium.setCellValueFactory(new PropertyValueFactory<>("nivel"));
@@ -231,5 +229,4 @@ public class SettingsController {
         tabla.setItems(lista);
         tabla.getColumns();
     }
-
 }

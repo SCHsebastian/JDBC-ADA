@@ -1,21 +1,16 @@
 package controllers;
 import dbconnection.Login;
 import dbconnection.LoginAccessDB;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-import java.sql.SQLException;
 
 public class LoginController {
 
@@ -32,7 +27,7 @@ public class LoginController {
     private TextField user;
 
     @FXML
-    void inicia(ActionEvent event){
+    void inicia(){
         usuario = loginAccessDB.getLogin(user.getText(), password.getText());
         if(usuario != null){
             Parent parent = null;
@@ -56,7 +51,7 @@ public class LoginController {
     }
 
     @FXML
-    void registra(ActionEvent event) {
+    void registra() {
         Parent parent = null;
         try {
             parent = FXMLLoader.load(getClass().getResource("/fxml/register.fxml"));
@@ -70,7 +65,7 @@ public class LoginController {
         stage.show();
     }
 
-    public void onEnter(ActionEvent actionEvent) {
-        inicia(actionEvent);
+    public void onEnter() {
+        inicia();
     }
 }

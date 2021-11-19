@@ -1,7 +1,6 @@
 package controllers;
 
 import dbconnection.Cancion;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -52,35 +51,35 @@ public class PrincipalController {
     // Acciones del menu
 
     @FXML
-    void perfil(ActionEvent event) throws IOException {
+    void perfil() throws IOException {
         Parent home = FXMLLoader.load(getClass().getResource("/fxml/principalPages/perfil.fxml"));
         contentPane.getChildren().removeAll();
         contentPane.getChildren().setAll(home);
     }
 
     @FXML
-    void premium(ActionEvent event) throws IOException, URISyntaxException {
+    void premium() throws IOException, URISyntaxException {
         if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
             Desktop.getDesktop().browse(new URI("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FSGBWZBTXZR3E"));
         }
     }
 
     @FXML
-    void settings(ActionEvent event) throws IOException {
+    void settings() throws IOException {
         Parent home = FXMLLoader.load(getClass().getResource("/fxml/principalPages/settings.fxml"));
         contentPane.getChildren().removeAll();
         contentPane.getChildren().setAll(home);
     }
 
     @FXML
-    void home(ActionEvent event) throws IOException {
+    void home() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/principalPages/home.fxml"));
         contentPane.getChildren().removeAll();
         contentPane.getChildren().setAll(root);
     }
 
     @FXML
-    void miMusica(ActionEvent event) throws IOException {
+    void miMusica() throws IOException {
         Parent home = FXMLLoader.load(getClass().getResource("/fxml/principalPages/miMusica.fxml"));
         contentPane.getChildren().removeAll();
         contentPane.getChildren().setAll(home);
@@ -89,47 +88,47 @@ public class PrincipalController {
     /// Acciones del slider
 
     @FXML
-    void adelantar(ActionEvent event) {
+    void adelantar() {
         mediaPlayer.seek(mediaPlayer.getTotalDuration());
     }
 
     @FXML
-    void adelante(ActionEvent event) {
+    void adelante() {
         mediaPlayer.seek(mediaPlayer.getCurrentTime().add(Duration.millis(500)));
     }
 
     @FXML
-    void atras(ActionEvent event) {
+    void atras() {
 
     }
 
     @FXML
-    void atrasar(ActionEvent event) {
+    void atrasar() {
         mediaPlayer.seek(mediaPlayer.getCurrentTime().subtract(Duration.millis(500)));
     }
 
     @FXML
-    void bucle(ActionEvent event) {
+    void bucle() {
         while (mediaPlayer.getTotalDuration() == mediaPlayer.getCurrentTime()) {
             mediaPlayer.seek(mediaPlayer.getStartTime());
         }
     }
 
     @FXML
-    void megusta(ActionEvent event) throws SQLException {
+    void megusta() throws SQLException {
         Cancion xd = LoginController.loginAccessDB.getCancion(media.getSource());
         LoginController.loginAccessDB.addLike(xd);
     }
 
     @FXML
-    void mezclar(ActionEvent event) {
+    void mezclar() {
         mediaList.sort((o1, o2) -> {
             return (int) (Math.random() * 3 - 1);
         });
     }
 
     @FXML
-    void pausar(ActionEvent event) {
+    void pausar() {
         if (isPlaying) {
             mediaPlayer.pause();
         }else {
@@ -138,7 +137,7 @@ public class PrincipalController {
     }
 
     @FXML
-    void silenciar(ActionEvent event) {
+    void silenciar() {
         mediaPlayer.setVolume(0);
     }
 
